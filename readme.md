@@ -1,6 +1,4 @@
-# Three.js - Template - Complex
-
-🚧 This template is under construction
+# Three.js - Mesh Physical Material Study
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
