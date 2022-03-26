@@ -1,10 +1,13 @@
 import * as THREE from 'three'
 
+import Experience from './Experience'
+import Morph from './Morph'
+
 export default class World
 {
     constructor(_options)
     {
-        this.experience = window.experience
+        this.experience = new Experience()
         this.config = this.experience.config
         this.scene = this.experience.scene
         this.resources = this.experience.resources
@@ -13,7 +16,7 @@ export default class World
         {
             if(_group.name === 'base')
             {
-                this.setDummy()
+                this.setMorph()
             }
         })
     }
@@ -27,15 +30,23 @@ export default class World
         this.scene.add(cube)        
     }
 
+    setMorph() {
+        this.morph = new Morph()
+    }
+
     resize()
     {
     }
 
     update()
     {
+        if(this.morph)
+            this.morph.update()
     }
 
     destroy()
     {
+        if(this.morph)
+            this.morph.destroy()
     }
 }
