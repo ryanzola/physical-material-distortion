@@ -10,7 +10,7 @@ void main() {
   float n = noise(vPosition + time) * 0.5;
 
   vec3 baseFirst = vec3(0.08, 0.17, 0.2);
-  vec3 accent = vec3(0.0);
+  vec3 accent = vec3(0.05, 0.0, 0.0);
   vec3 baseSecond = vec3(0.2, 0.38, 0.42);
 
   vec2 baseUv = rotate2d(n) * vPosition.xy * 0.1;

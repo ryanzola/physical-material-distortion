@@ -1,9 +1,6 @@
 import * as THREE from 'three'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
-
-import { NoiseShader } from './Utils/NoiseShader'
 
 import Experience from './Experience'
 
@@ -20,7 +17,7 @@ export default class Renderer
         this.scene = this.experience.scene
         this.camera = this.experience.camera
         
-        this.usePostprocess = true
+        this.usePostprocess = false
 
         this.setInstance()
         this.setPostProcess()
@@ -94,10 +91,6 @@ export default class Renderer
         this.postProcess.composer.setPixelRatio(this.config.pixelRatio)
 
         this.postProcess.composer.addPass(this.postProcess.renderPass)
-
-        const effect1 = new ShaderPass( NoiseShader );
-        effect1.uniforms[ 'scale' ].value = 1;
-        // this.postProcess.composer.addPass( effect1 );
     }
 
     resize()
