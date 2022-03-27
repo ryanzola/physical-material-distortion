@@ -16,7 +16,7 @@ export default class Background {
   }
 
   setGeometry() {
-    this.geometry = new THREE.SphereBufferGeometry(9, 32, 32)
+    this.geometry = new THREE.SphereBufferGeometry(6.6, 32, 32)
   }
 
   setMaterial() {

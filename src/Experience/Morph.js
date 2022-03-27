@@ -130,7 +130,7 @@ export default class Morph {
       );
     }`
 
-    let computeDistortion = `  float amp = 1.4;
+    let computeDistortion = `  float amp = 0.5;
     vec3 displacedPosition = position + amp * normal * DistortedPosition(position);
   
     vec3 eps = vec3(0.001, 0.0, 0.0);
@@ -208,7 +208,7 @@ export default class Morph {
       // color(t) = a + b ⋅ cos[ 2π(c⋅t+d)]
       shader.fragmentShader = shader.fragmentShader.replace(
         `#include <map_fragment>`,
-        `diffuseColor.rgb = Color(vNoise * 10.0);`
+        `diffuseColor.rgb = vec3(vNoise, 0.0, 0.0);`
       )
     }
   }
@@ -219,16 +219,20 @@ export default class Morph {
   }
 
   setLights() {
-    const light1 = new AmbientLight(0xffffff, 0.3)
+    const light1 = new AmbientLight(0xffffff, 1)
     this.scene.add(light1)
 
-    const light2 = new DirectionalLight(0xffffff, 0.8)
+    const light2 = new DirectionalLight(0xff9999, 0.8)
     light2.position.set(-0.5, 0, 0.866)
     this.scene.add(light2)
 
     const light3 = new DirectionalLight(0xffffff, 0.8)
     light3.position.set(0.5, 0, -0.866)
     this.scene.add(light3)
+
+    const light4 = new DirectionalLight(0xffffff, 1)
+    light4.position.set(2, -1, -2)
+    this.scene.add(light4)
   }
 
   update() {
