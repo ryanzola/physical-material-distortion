@@ -2,6 +2,7 @@ import * as THREE from 'three'
 
 import Experience from './Experience'
 import Morph from './Morph'
+import Background from './Background'
 
 export default class World
 {
@@ -17,21 +18,17 @@ export default class World
             if(_group.name === 'base')
             {
                 this.setMorph()
+                this.setBackground()
             }
         })
     }
 
-    setDummy()
-    {
-        const cube = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshBasicMaterial({ map: this.resources.items.lennaTexture })
-        )
-        this.scene.add(cube)        
-    }
-
     setMorph() {
         this.morph = new Morph()
+    }
+
+    setBackground() {
+        this.background = new Background()
     }
 
     resize()
@@ -42,6 +39,9 @@ export default class World
     {
         if(this.morph)
             this.morph.update()
+
+        if(this.background)
+            this.background.update()
     }
 
     destroy()

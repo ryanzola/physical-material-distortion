@@ -35,7 +35,7 @@ export default class Resources extends EventEmitter
 
         // Images
         this.loaders.push({
-            extensions: ['jpg', 'png'],
+            extensions: ['jpg', 'png', 'jpeg'],
             action: (_resource) =>
             {
                 const image = new Image()
@@ -72,7 +72,7 @@ export default class Resources extends EventEmitter
 
         // Draco
         const dracoLoader = new DRACOLoader()
-        dracoLoader.setDecoderPath('draco')
+        dracoLoader.setDecoderPath('draco/')
         dracoLoader.setDecoderConfig({ type: 'js' })
 
         this.loaders.push({
